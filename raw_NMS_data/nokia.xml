@@ -11,7 +11,7 @@
        <granPeriod endTime="2022-08-16T16:15:00-04:00" duration="PT900S"/>
        <repPeriod duration="PT900S"/>
        <measTypes>M8049C1 M8049C2 M8049C3 M8049C0</measTypes>
-      -<measValue measObjLdn="PLMN-PLMN/MRBTS-12136/LNBTS-12136">
+      -<measValue measObjLdn="PLMN-PLMN/MRBTS-100001/LNBTS-1000011">
          <measResults>88103 38268 101861 78</measResults>
        </measValue>
     </measInfo>
