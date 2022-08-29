@@ -13,5 +13,6 @@ Either:
 2) docker run -it apache/spark-py /opt/spark/bin/pyspark
 
 ## Reference
-https://github.com/arezamoosavi/AcidOnSpark-ETL
-https://blog.min.io/delta-lake-minio-multi-cloud/
+- https://github.com/arezamoosavi/AcidOnSpark-ETL
+- https://blog.min.io/delta-lake-minio-multi-cloud/
+- https://github.com/UBC-UrbanDataLab/Anomaly-Detection-MDS2021#code
