@@ -11,3 +11,6 @@
 Either:
 1) pip install pyspark
 2) docker run -it apache/spark-py /opt/spark/bin/pyspark
+
+## Reference
+https://github.com/arezamoosavi/AcidOnSpark-ETL
