@@ -14,3 +14,4 @@ Either:
 
 ## Reference
 https://github.com/arezamoosavi/AcidOnSpark-ETL
+https://blog.min.io/delta-lake-minio-multi-cloud/
