@@ -1,0 +1,16 @@
+  spark-master:
+    build: ./spark
+    restart: unless-stopped
+    ports:
+      - 4040:4040
+      - 7077:7077
+      - 8080:8080
+      - 18080:18080
+    command: sh spark-master.sh
+
+  spark-worker:
+    build: ./spark
+    restart: unless-stopped
+    ports:
+      - "8081-8085:8081"
+    command: sh spark-worker.sh
