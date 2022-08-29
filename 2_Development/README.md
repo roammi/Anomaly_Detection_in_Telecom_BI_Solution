@@ -10,7 +10,13 @@
 ## Spark setup
 Either:
 1) pip install pyspark
-2) docker run -it apache/spark-py /opt/spark/bin/pyspark
+2) pip install 
+
+## Connection between minio and spark 
+
+JARS needed
+- wget --no-verbose https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.7.4/aws-java-sdk-1.7.4.jar
+- wget --no-verbose https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.2.2/hadoop-aws-3.2.2.jar
 
 ## Reference
 - https://github.com/arezamoosavi/AcidOnSpark-ETL
