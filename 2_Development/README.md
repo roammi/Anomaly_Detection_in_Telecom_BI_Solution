@@ -8,12 +8,11 @@
 > Replace D:\ with the path to the drive or directory in which you want MinIO to store data   
 
 ## Spark setup
-Either:
-1) pip install pyspark
-2) pip install 
+1) use dockerfile and docker compose files in spark folder and run: 
+> docker-compose up   
+2) pip install pyspark
 
 ## Connection between minio and spark 
-
 JARS needed
 - wget --no-verbose https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.7.4/aws-java-sdk-1.7.4.jar
 - wget --no-verbose https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.2.2/hadoop-aws-3.2.2.jar
