@@ -1,4 +1,4 @@
-#Development
+# Development
 
 ## Minio setup
 1) To run MinIO on 64-bit Windows hosts, download the MinIO executable from the following URL:
