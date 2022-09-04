@@ -10,7 +10,7 @@
 ## Spark setup
 1) use dockerfile and docker compose files in spark folder and run: 
 > docker-compose up   
-2) pip install pyspark
+2) py -m pip install pyspark
 
 ## Connection between minio and spark 
 JARS needed
