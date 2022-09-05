@@ -21,3 +21,4 @@ JARS needed
 - https://github.com/arezamoosavi/AcidOnSpark-ETL
 - https://blog.min.io/delta-lake-minio-multi-cloud/
 - https://github.com/UBC-UrbanDataLab/Anomaly-Detection-MDS2021#code
+- https://github.com/BasPH/data-pipelines-with-apache-airflow/tree/master/chapter14
