@@ -1,34 +1,58 @@
-$ curl -L "https://ll.thespacedevs.com/2.0.0/launch/upcoming"
+import json
+import pathlib
  
-{
- ...
- "results": [
-   {
-     "id": "528b72ff-e47e-46a3-b7ad-23b2ffcec2f2",
-     "url": "https://.../528b72ff-e47e-46a3-b7ad-23b2ffcec2f2/",
-     "launch_library_id": 2103,
-     "name": "Falcon 9 Block 5 | NROL-108",
-     "net": "2020-12-19T14:00:00Z",
-     "window_end": "2020-12-19T17:00:00Z",
-     "window_start": "2020-12-19T14:00:00Z",
-     ➥ "image":
-     "https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/
-      media/launch_images/falcon2520925_image_20201217060406.jpeg",
-     "infographic": ".../falcon2520925_infographic_20201217162942.png",
-     ...
-   },
-   {
-     "id": "57c418cc-97ae-4d8e-b806-bb0e0345217f",
-     "url": "https://.../57c418cc-97ae-4d8e-b806-bb0e0345217f/",
-     "launch_library_id": null,
-     "name": "Long March 8  | XJY-7 & others",
-     "net": "2020-12-22T04:29:00Z",
-     "window_end": "2020-12-22T05:03:00Z",
-     "window_start": "2020-12-22T04:29:00Z",
-     "image": "https://.../long2520march_image_20201216110501.jpeg",
-     "infographic": null,
-     ...
-   },
-   ...
- ]
-}
+import airflow
+import requests
+import requests.exceptions as requests_exceptions
+from airflow import DAG
+from airflow.operators.bash import BashOperator
+from airflow.operators.python import PythonOperator
+ 
+dag = DAG(
+   dag_id="download_rocket_launches",
+   start_date=airflow.utils.dates.days_ago(14),
+   schedule_interval=None,
+)
+ 
+download_launches = BashOperator(
+   task_id="download_launches",
+   bash_command="curl -o /tmp/launches.json -L 'https://ll.thespacedevs.com/2.0.0/launch/upcoming'",
+   dag=dag,
+)
+ 
+ 
+def _get_pictures():
+   # Ensure directory exists
+   pathlib.Path("/tmp/images").mkdir(parents=True, exist_ok=True)
+ 
+   # Download all pictures in launches.json
+   with open("/tmp/launches.json") as f:
+       launches = json.load(f)
+       image_urls = [launch["image"] for launch in launches["results"]]
+       for image_url in image_urls:
+           try:
+               response = requests.get(image_url)
+               image_filename = image_url.split("/")[-1]
+               target_file = f"/tmp/images/{image_filename}"
+               with open(target_file, "wb") as f:
+                   f.write(response.content)
+               print(f"Downloaded {image_url} to {target_file}")
+           except requests_exceptions.MissingSchema:
+               print(f"{image_url} appears to be an invalid URL.")
+           except requests_exceptions.ConnectionError:
+               print(f"Could not connect to {image_url}.")
+ 
+ 
+get_pictures = PythonOperator(
+   task_id="get_pictures",
+   python_callable=_get_pictures,
+   dag=dag,
+)
+ 
+notify = BashOperator(
+   task_id="notify",
+   bash_command='echo "There are now $(ls /tmp/images/ | wc -l) images."',
+   dag=dag,
+)
+ 
+download_launches >> get_pictures >> notify
