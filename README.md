@@ -7,3 +7,5 @@ Business Intelligence Solution to monitor and identify anomalies in Telecommunic
 4) Notificating of Anomalies
 
 ![title](Images/datalakehouse.png)
+
+https://miro.com/app/board/uXjVPPpgmI8=/?share_link_id=869557065143
