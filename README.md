@@ -12,3 +12,7 @@ Business Intelligence Solution to monitor and identify anomalies in Telecommunic
 ![](Images/Anomaly%20Detection%20Project.jpg)
 
 <https://miro.com/app/board/uXjVPPpgmI8=/?share_link_id=869557065143>
+
+![](Images/figura_docker_data_platform.png)
+
+<https://excalidraw.com/>
