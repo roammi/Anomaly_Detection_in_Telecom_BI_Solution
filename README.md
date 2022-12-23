@@ -1,6 +1,6 @@
 # Anomaly Detection in Telecom - BI Solution
 
-This Project builds a Business Intelligence Solution to monitor and identify anomalies in Telecommunication Networks. It is composed of: Data Ingestion, processing and storage, data mining practices, dashboard for monitoring and notification of anomalies.
+This Project is part of a Master's candidate tesis that proposes to build a Business Intelligence Solution to monitor and identify anomalies in Telecommunication Networks. It is composed of: Data Ingestion, processing and storage, data mining practices, dashboard for monitoring and notification of anomalies.
 
 ![](Images/datalakehouse.png)
 
